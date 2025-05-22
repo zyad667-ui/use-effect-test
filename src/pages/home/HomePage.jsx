@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
+import HeroSection from '../../components/HeroSections';
+import ProductList from '../../components/ProductCard';
 
 const HomePage = () => {
+    const [cart, setCart] = useState([]);
+
+    const handleAddToCart = (product) => {
+        setCart((prev) => [...prev, product]);
+    };
 
     return (
-        <>
-
-            <h1>hello world</h1>
-
-        </>
+        <main>
+            <HeroSection />
+            <ProductList onAddToCart={handleAddToCart} />
+        </main>
     );
 };
 
