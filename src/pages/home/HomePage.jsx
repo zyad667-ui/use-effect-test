@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import HeroSections from '../../components/HeroSections'; // 
-import ProductCard from '../../components/ProductCard';   
-
+import ProductCard from '../../components/ProductCard';
 const HomePage = () => {
     const [cart, setCart] = useState([]);
 
@@ -25,7 +24,7 @@ const HomePage = () => {
         },
         {
             id: 3,
-            name: "hoddie",
+            name: "Hoodie",
             price: 49.99,
             image: "https://i.pinimg.com/736x/96/ba/e4/96bae4d00ce806d3b19d3c150bef7e73.jpg"
         },
@@ -37,7 +36,7 @@ const HomePage = () => {
         },
         {
             "id": 5,
-            "name": "cargo pants",
+            "name": "Cargo Pants",
             "price": 159.00,
             "image": "https://i.pinimg.com/736x/6f/4f/b8/6f4fb89845e88b4b1437e2c6dd3512bd.jpg"
         },
@@ -55,7 +54,7 @@ const HomePage = () => {
         },
         {
             "id": 8,
-            "name": " Hoodie",
+            "name": "Gray Hoodie",
             "price": 99.00,
             "image": "https://i.pinimg.com/736x/a9/f7/fb/a9f7fb562caebb9de22293e0136889dc.jpg"
         },
@@ -73,20 +72,45 @@ const HomePage = () => {
         }
     ];
 
+    const productGridStyles = {
+        padding: '3rem 2rem',
+        maxWidth: '1400px',
+        margin: '0 auto'
+    };
+
+    const titleStyles = {
+        textAlign: 'center',
+        marginBottom: '3rem',
+        fontSize: '2.5rem',
+        fontWeight: '700',
+        color: '#1a1a1a',
+        fontFamily: "'Montserrat', sans-serif",
+        letterSpacing: '1px'
+    };
+
+    const gridStyles = {
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+        gap: '2rem',
+        justifyItems: 'center'
+    };
+
     return (
         <main>
             <HeroSections />
-            <div style={{ padding: '2rem', display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
-                <h2 style={{ width: '100%', textAlign: 'center', marginBottom: '2rem' }}>
+            <div style={productGridStyles}>
+                <h2 style={titleStyles}>
                     Nos Produits
                 </h2>
-                {sampleProducts.map(product => (
-                    <ProductCard
-                        key={product.id}
-                        product={product}
-                        onAddToCart={handleAddToCart}
-                    />
-                ))}
+                <div style={gridStyles}>
+                    {sampleProducts.map(product => (
+                        <ProductCard
+                            key={product.id}
+                            product={product}
+                            onAddToCart={handleAddToCart}
+                        />
+                    ))}
+                </div>
             </div>
         </main>
     );
