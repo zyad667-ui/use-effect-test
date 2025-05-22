@@ -69,7 +69,19 @@ const HomePage = () => {
             "name": "Stitch Anorak Jacket",
             "price": 169.00,
             "image": "https://i.pinimg.com/736x/11/82/4d/11824d787451255d908e3ff9b5e42ad6.jpg"
-        }
+        },
+        {
+            "id": 10,
+            "name": "Stitch Anorak Jacket",
+            "price": 169.00,
+            "image": "https://i.pinimg.com/736x/7e/25/37/7e25372c9f8bfa28b5cada481a938750.jpg"
+        },
+        {
+            "id": 10,
+            "name": "Stitch Anorak Jacket",
+            "price": 169.00,
+            "image": "https://i.pinimg.com/736x/79/4f/fb/794ffb6ff9ee062f203f966f58db0455.jpg"
+        },
     ];
 
     const productGridStyles = {

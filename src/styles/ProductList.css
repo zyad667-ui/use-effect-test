@@ -1,0 +1,14 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2.5rem;
+    padding: 2rem 0;
+    width: 100%;
+}
+
+.status {
+    text-align: center;
+    font-size: 1.3rem;
+    color: #888;
+    margin: 2rem 0;
+}
