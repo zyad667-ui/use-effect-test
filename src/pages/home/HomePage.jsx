@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import HeroSections from '../../components/HeroSections'; // 
+import HeroSections from '../../components/HeroSections';  
 import ProductCard from '../../components/ProductCard';
+
 const HomePage = () => {
     const [cart, setCart] = useState([]);
 
