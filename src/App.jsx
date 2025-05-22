@@ -5,15 +5,10 @@ import Navbar from './layouts/Navbar';
 import ErrorPage from './pages/error/ErrorPage';
 
 const App = () => {
-  const [name, setName] = useState(null);
   const [data, setData] = useState(null);
 
-  const saveChange = () => {
-    setData(name);
-  };
-
   const test = () => {
-    console.log("Data changed successfully!");
+    console.log("Data changed successfully!", data);
   };
 
   useEffect(() => {
@@ -22,7 +17,7 @@ const App = () => {
 
   useEffect(() => {
     return () => {
-      console.log("Cleanup logic or second effect here");
+      console.log("App cleanup");
     };
   }, []);
 
