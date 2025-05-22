@@ -1,17 +1,14 @@
-import react from "react";
-import "../styles/HeroSections.css";
+import React from "react";
+import "../styles/HeroSection.css";
 
 const HeroSections = () => (
-    <section className="{styles.hero}">
-
-        <img src="" alt="" />
-
-
-        <div className={styles.heroText}>
+    <section className="hero"> 
+        <img src="/api/placeholder/800/400" alt="Hero Image" className="heroImage" />
+        <div className="heroText">
             <h1>EBrand - Nouvelle Collection S/S 2024</h1>
             <p>Découvrez les tendances de la saison</p>
         </div>
     </section>
-)
+);
 
-export default HeroSection; 
+export default HeroSections;

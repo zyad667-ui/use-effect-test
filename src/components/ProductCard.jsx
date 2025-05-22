@@ -1,5 +1,5 @@
-import react from 'react';
-import styles from '../styles/ProductCard.module.css';
+import React from 'react';
+import styles from '../styles/ProductCard.module.css'; // Assuming you have a CSS module for styling
 
 const ProductCard = ({ product, onAddToCart }) => (
     <div className={styles.card}>
