@@ -1,13 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import HeroSections from '../../components/HeroSections';  
 import ProductCard from '../../components/ProductCard';
+import fetchTestData from '../../components/fetchTestData';
+import loginUser from '../../components/loginApi';
 
 const HomePage = () => {
     const [cart, setCart] = useState([]);
+    const [apiData, setApiData] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+
+    // Login state
+    const [loginEmail, setLoginEmail] = useState('');
+    const [loginPassword, setLoginPassword] = useState('');
+    const [loginLoading, setLoginLoading] = useState(false);
+    const [loginError, setLoginError] = useState(null);
+    const [loginResult, setLoginResult] = useState(null);
+
+    useEffect(() => {
+        setLoading(true);
+        setError(null);
+        fetchTestData()
+            .then(data => {
+                setApiData(data);
+                setLoading(false);
+            })
+            .catch(err => {
+                setError(err.message || 'Error fetching data');
+                setLoading(false);
+            });
+    }, []);
 
     const handleAddToCart = (product) => {
         setCart((prev) => [...prev, product]);
         console.log('Produit ajouté:', product);
+    };
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        setLoginLoading(true);
+        setLoginError(null);
+        setLoginResult(null);
+        try {
+            const result = await loginUser(loginEmail, loginPassword);
+            setLoginResult(result);
+        } catch (err) {
+            setLoginError(err.message || 'Login failed');
+        } finally {
+            setLoginLoading(false);
+        }
     };
 
     const sampleProducts = [
@@ -110,6 +151,15 @@ const HomePage = () => {
 
     return (
         <main>
+            <section style={{ padding: '1rem', background: '#f9f9f9', marginBottom: '2rem' }}>
+                {loading && <p>Loading API data...</p>}
+                {error && <p style={{ color: 'red' }}>Error: {error}</p>}
+                {apiData && (
+                    <pre style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word', background: '#fff', padding: '1rem', borderRadius: '6px', boxShadow: '0 1px 4px rgba(0,0,0,0.05)' }}>
+                        {apiData}
+                    </pre>
+                )}
+            </section>
             <HeroSections />
             <div style={productGridStyles}>
                 <h2 style={titleStyles}>
